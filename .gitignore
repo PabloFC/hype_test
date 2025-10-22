@@ -1,0 +1,30 @@
+# Ignorar archivo de configuración local que contiene credenciales
+config/config.php
+
+# Sistema y editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / npm (por si se agrega frontend build)
+node_modules/
+
+# Composer
+vendor/
+
+# Logs y temporales
+logs/
+*.log
+*.tmp
+
+# PHPStorm / VSCode
+.idea/
+.vscode/
+
+# Dependencias del OS
+*.exe
+*.dll
+
+# Build artefacts
+dist/
+build/

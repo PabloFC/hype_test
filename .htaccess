@@ -1,0 +1,17 @@
+# Deny access to all files in root directory except public folder
+# This adds extra security if DocumentRoot is not properly configured
+
+
+# Deny access to sensitive files
+<FilesMatch "^(\.env|\.git|composer\.(json|lock)|package(-lock)?\.json|\.htaccess)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes

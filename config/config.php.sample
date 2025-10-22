@@ -1,0 +1,31 @@
+
+<?php
+// Example configuration — DO NOT store this file with real credentials
+
+declare(strict_types=1);
+
+// Debug mode (set to false in production)
+const APP_DEBUG = true;
+
+// Database configuration — replace with environment variables in production
+const DB_HOST = 'localhost';
+const DB_PORT = 3306;
+const DB_NAME = 'hype_app';
+const DB_USER = 'db_user_here';
+const DB_PASS = 'db_pass_here';
+const DB_CHARSET = 'utf8mb4';
+
+// Application name
+const APP_NAME = 'Hype Test';
+
+// Base URL (adjust according to your environment)
+const BASE_URL = 'http://localhost/PabloFuentes_HypeTest/public';
+
+// Cookies and session
+const SESSION_NAME = 'hype_session';
+const COOKIE_SECURE = false; 
+const COOKIE_HTTPONLY = true;
+const COOKIE_SAMESITE = 'Lax';
+
+// CSRF
+const CSRF_TOKEN_KEY = 'csrf_token';
