@@ -8,13 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 if (!csrf_validate()) {
-    if (APP_DEBUG) {
-        die('Invalid CSRF token');
+        if (APP_DEBUG) {
+            die('Invalid CSRF token');
+        }
+        redirect('login.php');
     }
-    redirect('login.php');
-}
 
-[$ok, $dataOrErr] = validate_login_inputs($_POST['username'] ?? null, $_POST['password'] ?? null);
+    $inputUsername = $_POST['username'] ?? null;
+    $inputPassword = $_POST['password'] ?? null;
+
+    [$ok, $dataOrErr] = validate_login_inputs($inputUsername, $inputPassword);
 
 if (!$ok) {
     $_SESSION['flash_error'] = $dataOrErr;
