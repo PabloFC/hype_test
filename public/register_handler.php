@@ -19,15 +19,21 @@ if (!csrf_validate()) {
 [$okPass, $passOrErr] = validate_passwords($_POST['password'] ?? null, $_POST['confirm_password'] ?? null);
 
 if (!$okUser || !$okEmail || !$okPass) {
-    $msg = !$okUser ? $usernameOrErr : (!$okEmail ? $emailOrErr : $passOrErr);
-    $_SESSION['flash_error'] = $msg;
+    if (!$okUser) {
+        $_SESSION['flash_error'] = $usernameOrErr;
+    } elseif (!$okEmail) {
+        $_SESSION['flash_error'] = $emailOrErr;
+    } else {
+        $_SESSION['flash_error'] = $passOrErr;
+    }
     redirect('views/register.php');
 }
-
 [$ok, $message] = register_user((string)$usernameOrErr, (string)$emailOrErr, (string)$passOrErr);
 if ($ok) {
     // Auto-login after successful registration
     authenticate((string)$usernameOrErr, (string)$passOrErr);
+    // Set a flash success message so the user receives feedback after redirect
+    $_SESSION['flash_success'] = 'Registration successful. Welcome, ' . (string)$usernameOrErr . '!';
     redirect('home.php');
 }
 $_SESSION['flash_error'] = $message;
