@@ -1,3 +1,5 @@
-# Disable directory listing
+# Brief: Controls directory listing and the default index for the public folder.
+# - Options -Indexes: prevents directory listing (returns 403 instead of showing files).
+# - DirectoryIndex index.php: serves index.php as the default file for this directory.
 Options -Indexes
 DirectoryIndex index.php
